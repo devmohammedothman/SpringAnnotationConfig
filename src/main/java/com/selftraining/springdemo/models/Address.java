@@ -15,6 +15,8 @@ public class Address {
 		this.flatNo = 8;
 		this.streetNo = 40;
 		this.streetName = "Zedan st";
+		
+		System.out.println("Address Contructor and this will be injected to User by Constructor Injection");
 	}
 
 	public Address(int flatNo, int streetNo, String streetName) {

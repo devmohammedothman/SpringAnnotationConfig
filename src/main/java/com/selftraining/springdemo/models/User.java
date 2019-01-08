@@ -1,11 +1,13 @@
 package com.selftraining.springdemo.models;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.selftraining.springdemo.services.PermissionService;
 
 @Component
+@Scope("prototype")
 public class User {
 
 	private int id;
@@ -13,14 +15,20 @@ public class User {
 	private String fullName;
 
 	private Address address;
-	
+
 	private PermissionService permissionService;
 
+	@Autowired
+	private Department department;
+
 	public User() {
+
+		System.out.println("Inside User Default Constructor");
 	}
 
 	@Autowired
 	public User(Address address) {
+		System.out.println("Inside User Injected Constructor");
 		this.address = address;
 	}
 
@@ -55,6 +63,10 @@ public class User {
 	@Autowired
 	public void setPermissionService(PermissionService permissionService) {
 		this.permissionService = permissionService;
+	}
+
+	public String getUserDepartment() {
+		return this.department.getName();
 	}
 
 }

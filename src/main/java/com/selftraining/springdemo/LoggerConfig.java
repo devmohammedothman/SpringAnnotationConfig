@@ -8,9 +8,11 @@ import java.util.logging.SimpleFormatter;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @Component
+@PropertySource("classpath:logger.properties")
 public class LoggerConfig {
 
 	@Value("${log.rootLoggerLevel}")

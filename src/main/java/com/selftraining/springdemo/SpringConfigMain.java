@@ -18,6 +18,9 @@ public class SpringConfigMain {
 		LoggerConfig logger = context.getBean("loggerConfig", LoggerConfig.class);
 
 		User userObj = context.getBean("user", User.class);
+		
+		//Change Bean Scope to prototype
+		User userObj2 = context.getBean("user", User.class);
 
 		// Display Logger Bean Values
 		System.out.println("rootLoggerLevel is :" + logger.getRootLoggerLevel() + " and printed Logger Level is :"
@@ -37,6 +40,14 @@ public class SpringConfigMain {
 					+" User Permission Name :"+permissionList.get(i).getPermissionName());
 		}
 		
+		
+		//Try Field Injection
+		System.out.println("User Department :"+userObj.getUserDepartment());
+		
+		//print Bean Objects to check prototype scope
+		System.out.println("User Object 1 Bean :"+userObj+" User Object 2 Bean "+userObj2);
+		System.out.println("Check Permission Service Bean Object for User Object 1 :"+userObj.getPermissionService());
+		System.out.println("Check Permission Service Bean Object for User Object 2 :"+userObj2.getPermissionService());
 
 		// close context
 		context.close();
